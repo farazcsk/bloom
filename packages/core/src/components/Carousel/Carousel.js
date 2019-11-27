@@ -1,80 +1,69 @@
 import PropTypes from 'prop-types';
-import React, { Component, Children } from 'react';
+import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
-import NukaCarousel from '@appearhere/nuka-carousel';
+import NukaCarousel from 'nuka-carousel';
+import MobileCarousel from './MobileCarousel';
+import ScreenSize from '../ScreenSize/ScreenSize';
+import Icon from '../Icon/Icon';
 
-import noop from '../../utils/noop';
 import css from './Carousel.css';
 
-export default class Carousel extends Component {
-  static propTypes = {
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired,
-    className: PropTypes.string,
-    lowestVisibleItemIndex: PropTypes.number,
-    onChange: PropTypes.func,
-    peaking: PropTypes.bool,
-    speed: PropTypes.number,
-  };
+const Carousel = (props) => {
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  static defaultProps = {
-    lowestVisibleItemIndex: 0,
-    peaking: false,
-    speed: 300,
-    onChange: noop,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { lowestVisibleItemIndex: props.lowestVisibleItemIndex };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { lowestVisibleItemIndex } = this.state;
-    const nextIndex = nextProps.lowestVisibleItemIndex;
-
-    if (nextIndex !== lowestVisibleItemIndex) {
-      this.setState({ lowestVisibleItemIndex: nextIndex }, () => {
-        const childLength = Children.count(nextProps.children);
-        const willWrapToEnd = lowestVisibleItemIndex === 0 && nextIndex === childLength - 1;
-        const willWrapToStart = lowestVisibleItemIndex === childLength - 1 && nextIndex === 0;
-
-        if (willWrapToEnd) {
-          this.carousel.previousSlide();
-        } else if (willWrapToStart) {
-          this.carousel.nextSlide();
-        } else {
-          this.carousel.goToSlide(nextIndex);
-        }
-      });
-    }
-  }
-
-  handleChange = lowestVisibleItemIndex => {
-    const { onChange } = this.props;
-    this.setState({ lowestVisibleItemIndex }, () => {
-      onChange(lowestVisibleItemIndex);
-    });
-  };
-
-  render() {
-    const { peaking, children, className, ...rest } = this.props;
-    const frameOverflow = peaking ? 'visible' : 'hidden';
-
+  const renderDesktopControls = () => {
     return (
-      <div className={cx(css.wrapper, className, peaking ? css.peaking : null)}>
-        <NukaCarousel
-          ref={c => {
-            this.carousel = c;
-          }}
-          decorators={[]}
-          frameOverflow={frameOverflow}
-          peaking={peaking}
-          afterSlide={this.handleChange}
-          {...rest}
-        >
-          {children}
-        </NukaCarousel>
+      <div className={css.controls}>
+        {props.title && <div className={css.title}>{props.title}</div> }
+        { props.slidesToShow < props.slides.length &&
+          <div>
+            <button
+              className={cx(css.button)}
+              disabled={slideIndex === 0}
+              onClick={() => setSlideIndex(slideIndex - 1)}
+            >
+              <Icon className={cx(css.chevron, css.prevIcon)} name="chevron-right" />
+            </button>
+            <button
+              className={cx(css.button)}
+              disabled={slideIndex === (props.slides.length - props.slidesToShow)}
+              onClick={() => setSlideIndex(slideIndex + 1)}
+            >
+              <Icon className={cx(css.chevron, css.nextIcon)} name="chevron-right" />
+            </button>
+          </div>
+        }
       </div>
-    );
+    )
   }
+
+  return (
+    <ScreenSize render={({ isMobile }) => (
+      isMobile ? <MobileCarousel title={props.title}>{props.children}</MobileCarousel> : (
+        <div>
+          {renderDesktopControls()}
+          <NukaCarousel slideIndex={slideIndex} {...props}>
+            {props.children.map(slide => (
+              <div className={css.slideInner}>{slide}</div>
+            ))}
+          </NukaCarousel>
+        </div>
+      )
+    )} />
+  )
 }
+
+Carousel.defaultProps = {
+  slidesToShow: 3,
+  framePadding: '0px -8px',
+  withoutControls: true,
+  title: 'Make your idea travel around the world',
+  dragging: false,
+}
+
+Carousel.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string,
+}
+
+export default Carousel;

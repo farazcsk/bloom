@@ -99,7 +99,6 @@ export default {
   external: [
     '@appearhere/react-input-range',
     '@appearhere/react-stickynode',
-    '@appearhere/nuka-carousel',
     'classnames',
     'classnames/bind',
     'commonmark',

@@ -8,7 +8,6 @@ import { D, H, T, A, C } from '../../../components/Scaffold/Scaffold';
 import {
   Carousel,
   PictureCard,
-  ControlledCarousel
 } from '@appearhere/bloom';
 
 import shared from '../../../shared.css';
@@ -273,70 +272,6 @@ const CarouselDocumentation = () => (
         <A href="https://github.com/FormidableLabs/nuka-carousel">NukaCarousel documentation</A>),
         can be used in combination of each other.
       </T>
-    </D>
-    <D>
-      <H level={2} className={shared.componentTitle}>
-        Controlled Carousel
-      </H>
-      <T elm="p" className={m.mtr}>
-        You should use this component in the majority of cases where you need a carousel. It
-        provides the default set of controls and indicators to provide the base level of interaction
-        expected when using a carousel.
-      </T>
-      <Specimen
-        classNames={{
-          root: m.mtr,
-          specimenContainer: m.par,
-        }}
-        code={dedent`
-          <ControlledCarousel>
-            { /* Slides */ }
-          </ControlledCarousel>
-        `}
-      >
-        <ControlledCarousel>
-          <div className={css.slide}>
-            <PictureCard
-              src="https://i1.wp.com/selectitaly.com/blog/wp-content/uploads/2014/11/Screen-Shot-2014-10-26-at-7.01.19-PM.png"
-              center
-              href="#"
-              className={css.slideContent}
-            />
-          </div>
-          <div className={css.slide}>
-            <PictureCard
-              src="https://i.pinimg.com/originals/62/76/a2/6276a25a5f45db33d3d1986406a24c1b.jpg"
-              center
-              href="#"
-              className={css.slideContent}
-            />
-          </div>
-          <div className={css.slide}>
-            <PictureCard
-              src="https://static1.squarespace.com/static/530e4e29e4b0ac922f793833/558248e5e4b00d5e96213624/55824b10e4b0344e14768da4/1434603518100/6th+Course_+Tagliatelle+with+ragu.jpg"
-              center
-              href="#"
-              className={css.slideContent}
-            />
-          </div>
-          <div className={css.slide}>
-            <PictureCard
-              src="https://blog4foodies.files.wordpress.com/2012/10/4-guitar-string-pasta.jpg"
-              center
-              href="#"
-              className={css.slideContent}
-            />
-          </div>
-          <div className={css.slide}>
-            <PictureCard
-              src="https://b70f084e29f3f8faffb0-389fffc5b90936635d166a32fdb11b6a.ssl.cf3.rackcdn.com/andy-hayler-osteria-francescana-monkfish-pasta-w709-h532.jpg"
-              center
-              href="#"
-              className={css.slideContent}
-            />
-          </div>
-        </ControlledCarousel>
-      </Specimen>
     </D>
   </div>
 );

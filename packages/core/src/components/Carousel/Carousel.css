@@ -1,8 +1,43 @@
-.wrapper {
-  overflow: hidden;
+.title {
+  font-family: var(--font-avenir);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--black);
 }
 
-.peaking {
-  padding-left: 8%;
-  padding-right: 8%;
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -0.25rem 1.5rem -0.25rem;
+}
+
+.button {
+  width: 28px;
+  height: 28px;
+  border-radius: 100px;
+  background: #151515;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  margin: 0 0.25rem;
+}
+
+.button:disabled {
+  background: #e8e8e8;
+}
+
+.chevron svg {
+  fill: white;
+}
+
+.prevIcon svg {
+  transform: rotate(180deg);
+}
+
+.slideInner {
+  padding: 0 8px;
 }

@@ -6,7 +6,6 @@ import { action } from '@storybook/addon-actions';
 import {
   PictureCard,
   Carousel,
-  ControlledCarousel
 } from '@appearhere/bloom';
 
 const StorySlide = ({ number }) => (
@@ -32,16 +31,3 @@ const slides = [...Array(10).keys()].map(i => <StorySlide number={i} key={i} />)
 storiesOf('Carousel', module).add('Default', () => (
   <Carousel onChange={action('Slide changed')}>{slides}</Carousel>
 ));
-
-storiesOf('Controlled Carousel', module)
-  .add('Default', () => <ControlledCarousel>{slides}</ControlledCarousel>)
-  .add('Muliple in view 💯', () => (
-    <ControlledCarousel slidesToShow={3}>{slides}</ControlledCarousel>
-  ))
-  .add('Infinite ∞', () => <ControlledCarousel wrapAround>{slides}</ControlledCarousel>)
-  .add('Peaking 🐦', () => <ControlledCarousel peaking>{slides}</ControlledCarousel>)
-  .add('🐦 + ∞ + 💯', () => (
-    <ControlledCarousel peaking wrapAround slidesToShow={3}>
-      {slides}
-    </ControlledCarousel>
-  ));

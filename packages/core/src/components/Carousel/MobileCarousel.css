@@ -1,0 +1,27 @@
+.slides {
+  overflow-x: auto;
+  transition: transform 0.5s ease 0s;
+  white-space: nowrap;
+  margin: 0 -0.25rem;
+}
+
+.slide {
+  display: inline-block;
+  white-space: normal;
+}
+
+.slideInner {
+  padding: 0 0.25rem;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-family: var(--font-avenir);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: var(--black);
+}
