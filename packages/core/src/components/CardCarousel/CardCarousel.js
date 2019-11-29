@@ -5,6 +5,7 @@ import NukaCarousel from 'nuka-carousel';
 import MobileCardCarousel from './MobileCardCarousel';
 import ScreenSize from '../ScreenSize/ScreenSize';
 import Icon from '../Icon/Icon';
+import SectionHeader from '../Type/SectionHeader/SectionHeader';
 
 import css from './CardCarousel.css';
 
@@ -14,7 +15,11 @@ const CardCarousel = (props) => {
   const renderDesktopControls = () => {
     return (
       <div className={css.controls}>
-        <div className={css.title}>{props.title}</div>
+        <SectionHeader
+          title={props.title}
+          level={2}
+          className={css.title}
+        />
         { props.slidesToShow < props.children.length &&
           <div className={css.buttons}>
             <button
@@ -44,7 +49,7 @@ const CardCarousel = (props) => {
           {renderDesktopControls()}
           <NukaCarousel
             slideIndex={slideIndex}
-            framePadding={isIpad ? "0px -8px" : "0px -4px"}
+            framePadding={isIpad ? "0px -0.5rem" : "0px -0.25px"}
             {...props}
           >
             {props.children.map((slide, index) => (
@@ -66,6 +71,7 @@ CardCarousel.defaultProps = {
 CardCarousel.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
+  slidesToShow: PropTypes.number.isRequired,
 }
 
 export default CardCarousel;

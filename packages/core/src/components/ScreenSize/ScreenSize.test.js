@@ -9,13 +9,12 @@ window.matchMedia = jest.fn().mockImplementation(query => {
   };
 });
 
-import CardCarousel from './CardCarousel';
+import ScreenSize from './ScreenSize';
 
 it('renders without crashing', () => {
   const { container } = render(
-    <CardCarousel>
-      <span>child</span>
-      <span>child</span>
-    </CardCarousel>
+    <ScreenSize render={({}) => (
+      <div />
+    )} />
   );
 });

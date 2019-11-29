@@ -29,6 +29,10 @@ const StorySlide = ({ number }) => (
 StorySlide.propTypes = { number: PropTypes.number };
 const slides = [...Array(10).keys()].map(i => <StorySlide number={i} key={i} />);
 
-storiesOf('CardCarousel', module).add('Default', () => (
+storiesOf('CardCarousel', module)
+.add('Default', () => (
   <CardCarousel slidesToShow={4} onChange={action('Slide changed')}>{slides}</CardCarousel>
+))
+.add('With Title', () => (
+  <CardCarousel title="Carousel Title" slidesToShow={4} onChange={action('Slide changed')}>{slides}</CardCarousel>
 ));

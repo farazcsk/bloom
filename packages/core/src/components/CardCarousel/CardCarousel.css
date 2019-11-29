@@ -1,13 +1,6 @@
 .title {
-  font-family: var(--font-avenir);
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  color: var(--black);
-  margin-bottom: 1.5rem;
+  font-size: var(--fontsize-large-ii);
+  margin: 0 0 1.5rem 0;
 }
 
 .controls {
@@ -23,7 +16,7 @@
   width: 28px;
   height: 28px;
   border-radius: 100px;
-  background: #151515;
+  background: var(--color-black);
   border: 0;
   outline: none;
   cursor: pointer;
@@ -33,11 +26,11 @@
 }
 
 .button:disabled {
-  background: #e8e8e8;
+  background: var(--color-greyLightest);
 }
 
 .controls .chevron svg {
-  fill: white;
+  fill: var(--color-greyLighter);
 }
 
 .prevIcon svg {
@@ -45,18 +38,18 @@
 }
 
 .slideInner {
-  padding: 0 4px;
+  padding: 0 0.25rem;
 }
 
 @media(min-width: 48rem) {
   .slideInner {
-    padding: 0 8px;
+    padding: 0 0.5rem;
   }
 }
 
 @media(min-width: 64rem) {
   .slideInner {
-    padding: 0 4px;
+    padding: 0 0.25rem;
   }
 }
   

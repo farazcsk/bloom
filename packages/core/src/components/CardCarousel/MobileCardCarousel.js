@@ -1,12 +1,17 @@
 import PropTypes from 'prop-types';
 import React, { Children } from 'react';
+import SectionHeader from '../Type/SectionHeader/SectionHeader';
 
 import css from './MobileCardCarousel.css';
 
 const MobileCardCarousel = ({ children = [], title }) => {
   return (
     <div>
-      {title && <div className={css.title}>{title}</div> }
+      <SectionHeader
+        title={title}
+        level={2}
+        className={css.title}
+      />
       <div className={css.slides}>
         {children.map((slide, index) => (
           <div key={index} className={css.slide}>
