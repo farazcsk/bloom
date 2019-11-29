@@ -8,8 +8,6 @@ import Card from '../Card/Card';
 const PictureCard = props => {
   const { src, href, children, className, center, bottom, style, overlayClassName, ...rest } = props;
 
-  console.log(props);
-
   return (
     <Card
       {...rest}

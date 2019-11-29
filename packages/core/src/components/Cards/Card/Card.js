@@ -7,8 +7,6 @@ import css from './Card.css';
 const Card = ({ className, href, target, children, ...rest }) => {
   const Component = href ? 'a' : 'div';
 
-  console.log(className);
-
   const classes = cx(css.root, href ? css.link : null, className);
 
   return (

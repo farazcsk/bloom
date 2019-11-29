@@ -18,7 +18,7 @@ const StorySlide = ({ number }) => (
         textAlign: 'center',
         fontSize: '5rem',
       }}
-      bottom
+      center
       href="#"
     >
       {number}

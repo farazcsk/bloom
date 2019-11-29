@@ -144,11 +144,12 @@ export default class DestinationListingCard extends Component {
           </BtnContainer>
           <div className={css.inner}>
             <Carousel
-              lowestVisibleItemIndex={visibleImageIndex}
+              slideIndex={visibleImageIndex}
               wrapAround
               swiping={false}
               dragging={false}
               onChange={onCarouselChange}
+              useMobileCarousel={false}
             >
               {images.map(({ src, ...imageProps }) => (
                 <a href={href} key={src} onClick={this.onClick} target={target}>

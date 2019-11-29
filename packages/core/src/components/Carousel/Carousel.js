@@ -12,6 +12,9 @@ const Carousel = (props) => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const renderDesktopControls = () => {
+    if (props.slidesToShow === 1) {
+      return null;
+    }
     return (
       <div className={css.controls}>
         {props.title && <div className={css.title}>{props.title}</div> }
@@ -39,7 +42,7 @@ const Carousel = (props) => {
 
   return (
     <ScreenSize render={({ isMobile, isIpad, isDesktop }) => (
-      isMobile ? <MobileCarousel title={props.title}>{props.children}</MobileCarousel> : (
+      isMobile && props.useMobileCarousel ? <MobileCarousel title={props.title}>{props.children}</MobileCarousel> : (
         <div>
           {renderDesktopControls()}
           <NukaCarousel
@@ -47,8 +50,8 @@ const Carousel = (props) => {
             framePadding={isIpad ? "0px -8px" : "0px -4px"}
             {...props}
           >
-            {props.children.map(slide => (
-              <div className={css.slideInner}>{slide}</div>
+            {props.children.map((slide, index) => (
+              <div key={index} className={css.slideInner}>{slide}</div>
             ))}
           </NukaCarousel>
         </div>
@@ -60,11 +63,14 @@ const Carousel = (props) => {
 Carousel.defaultProps = {
   withoutControls: true,
   dragging: false,
+  slidesToShow: 1,
+  useMobileCarousel: true,
 }
 
 Carousel.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
+  useMobileCarousel: PropTypes.bool.isRequired,
 }
 
 export default Carousel;

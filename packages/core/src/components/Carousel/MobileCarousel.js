@@ -8,8 +8,8 @@ const MobileCarousel = ({ children = [], title }) => {
     <div>
       {title && <div className={css.title}>{title}</div> }
       <div className={css.slides}>
-        {children.map(slide => (
-          <div className={css.slide}>
+        {children.map((slide, index) => (
+          <div key={index} className={css.slide}>
             <div className={css.slideInner}>
               {slide}
             </div>
