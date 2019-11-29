@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { subscribe } from 'subscribe-ui-event';
 import { canUseDOM } from 'exenv';
 
-const ScreenSize = ({ ipadSize = 64, desktopSize = 88, render }) => {
+const ScreenSize = ({ ipadSize = 48, desktopSize = 64, render }) => {
   const getSize = () => {
     if (!canUseDOM) {
       return;
     }
     return {
-      isMobile: window.matchMedia(`(max-width: ${ipadSize - 1}rem)`).matches,
-      isIpad: window.matchMedia(`(min-width: ${ipadSize}rem) and (max-width: ${desktopSize - 1}rem)`).matches,
+      isMobile: window.matchMedia(`(max-width: ${ipadSize - 0.0625}rem)`).matches,
+      isIpad: window.matchMedia(`(min-width: ${ipadSize}rem) and (max-width: ${desktopSize - 0.0625}rem)`).matches,
       isDesktop: window.matchMedia(`(min-width: ${desktopSize}rem)`).matches,
     };
   }

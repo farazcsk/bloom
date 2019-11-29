@@ -1,14 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 import dedent from 'dedent';
+import Carousel from 'nuka-carousel';
 
 import Specimen from '../../../components/Specimen/Specimen';
 import { D, H, T, A, C } from '../../../components/Scaffold/Scaffold';
 
-import {
-  Carousel,
-  PictureCard,
-} from '@appearhere/bloom';
+import { PictureCard } from '@appearhere/bloom';
 
 import shared from '../../../shared.css';
 import { Modifiers as m } from '@appearhere/bloom';

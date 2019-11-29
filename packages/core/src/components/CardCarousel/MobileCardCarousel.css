@@ -3,6 +3,12 @@
   transition: transform 0.5s ease 0s;
   white-space: nowrap;
   margin: 0 -0.25rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slides::-webkit-scrollbar {
+  display: none;
 }
 
 .slide {
