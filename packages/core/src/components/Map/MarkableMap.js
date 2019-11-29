@@ -321,6 +321,7 @@ export default class MarkableMap extends Component {
 
   handleClusterClick = cluster => {
     const { markers } = this.props;
+    console.log(cluster);
     const clusterSet = JSON.parse(cluster.properties.markerids);
 
     const unbreakableCluster = () => {
