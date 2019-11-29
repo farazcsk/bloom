@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Children } from 'react';
 
-import css from './MobileCarousel.css';
+import css from './MobileCardCarousel.css';
 
-const MobileCarousel = ({ children = [], title }) => {
+const MobileCardCarousel = ({ children = [], title }) => {
   return (
     <div>
       {title && <div className={css.title}>{title}</div> }
@@ -20,9 +20,9 @@ const MobileCarousel = ({ children = [], title }) => {
   )
 }
 
-MobileCarousel.propTypes = {
+MobileCardCarousel.propTypes = {
   children: PropTypes.array.isRequired,
   title: PropTypes.string
 }
 
-export default MobileCarousel;
+export default MobileCardCarousel;

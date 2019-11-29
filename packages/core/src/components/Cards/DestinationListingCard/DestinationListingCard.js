@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 import noop from '../../../utils/noop';
 import BtnContainer from '../../BtnContainer/BtnContainer';
-import Carousel from '../../Carousel/Carousel';
+import Carousel from 'nuka-carousel';
 import FittedImage from '../../FittedImage/FittedImage';
 import getValidIndex from '../../../utils/getValidIndex/getValidIndex';
 import HeartBtn from '../../HeartBtn/HeartBtn';
@@ -149,7 +149,7 @@ export default class DestinationListingCard extends Component {
               swiping={false}
               dragging={false}
               onChange={onCarouselChange}
-              useMobileCarousel={false}
+              withoutControls
             >
               {images.map(({ src, ...imageProps }) => (
                 <a href={href} key={src} onClick={this.onClick} target={target}>

@@ -5,11 +5,11 @@ import { action } from '@storybook/addon-actions';
 
 import {
   PictureCard,
-  Carousel,
+  CardCarousel,
 } from '@appearhere/bloom';
 
 const StorySlide = ({ number }) => (
-  <div key={`slide-${number}`} style={{ paddingLeft: '2%', paddingRight: '2%' }}>
+  <div key={`slide-${number}`}>
     <PictureCard
       src={`http://placekitten.com/g/287/4${number * 2 + 10}`}
       style={{
@@ -17,6 +17,7 @@ const StorySlide = ({ number }) => (
         verticalAlign: 'middle',
         textAlign: 'center',
         fontSize: '5rem',
+        width: '200px'
       }}
       center
       href="#"
@@ -28,6 +29,6 @@ const StorySlide = ({ number }) => (
 StorySlide.propTypes = { number: PropTypes.number };
 const slides = [...Array(10).keys()].map(i => <StorySlide number={i} key={i} />);
 
-storiesOf('Carousel', module).add('Default', () => (
-  <Carousel slidesToShow={4} onChange={action('Slide changed')}>{slides}</Carousel>
+storiesOf('CardCarousel', module).add('Default', () => (
+  <CardCarousel slidesToShow={4} onChange={action('Slide changed')}>{slides}</CardCarousel>
 ));

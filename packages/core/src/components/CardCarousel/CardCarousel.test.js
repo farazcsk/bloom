@@ -16,13 +16,13 @@ window.matchMedia = jest.fn().mockImplementation(query => {
   };
 });
 
-import Carousel from './Carousel';
+import CardCarousel from './CardCarousel';
 
 it('renders without crashing', () => {
   const { container } = render(
-    <Carousel>
+    <CardCarousel>
       <span>child</span>
       <span>child</span>
-    </Carousel>
+    </CardCarousel>
   );
 });

@@ -49,7 +49,7 @@ export SpaceFeatureCard from './Cards/SpaceFeatureCard/SpaceFeatureCard';
 export SpaceListingCard from './Cards/SpaceListingCard/SpaceListingCard';
 
 export ScreenSize from './ScreenSize/ScreenSize';
-export Carousel from './Carousel/Carousel';
+export CardCarousel from './CardCarousel/CardCarousel';
 export DismissablePanel from './DismissablePanel/DismissablePanel';
 export Dropdown from './Dropdown/Dropdown';
 export Figure from './Figure/Figure';
