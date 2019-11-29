@@ -18,7 +18,7 @@ const StorySlide = ({ number }) => (
         textAlign: 'center',
         fontSize: '5rem',
       }}
-      center
+      bottom
       href="#"
     >
       {number}
@@ -29,5 +29,5 @@ StorySlide.propTypes = { number: PropTypes.number };
 const slides = [...Array(10).keys()].map(i => <StorySlide number={i} key={i} />);
 
 storiesOf('Carousel', module).add('Default', () => (
-  <Carousel onChange={action('Slide changed')}>{slides}</Carousel>
+  <Carousel slidesToShow={4} onChange={action('Slide changed')}>{slides}</Carousel>
 ));

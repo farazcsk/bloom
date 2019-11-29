@@ -3,7 +3,7 @@ import React, { Children } from 'react';
 
 import css from './MobileCarousel.css';
 
-const MobileCarousel = ({ slidchildrenes = [], title }) => {
+const MobileCarousel = ({ children = [], title }) => {
   return (
     <div>
       {title && <div className={css.title}>{title}</div> }

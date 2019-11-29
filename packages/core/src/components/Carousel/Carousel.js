@@ -15,8 +15,8 @@ const Carousel = (props) => {
     return (
       <div className={css.controls}>
         {props.title && <div className={css.title}>{props.title}</div> }
-        { props.slidesToShow < props.slides.length &&
-          <div>
+        { props.slidesToShow < props.children.length &&
+          <div className={css.buttons}>
             <button
               className={cx(css.button)}
               disabled={slideIndex === 0}
@@ -26,7 +26,7 @@ const Carousel = (props) => {
             </button>
             <button
               className={cx(css.button)}
-              disabled={slideIndex === (props.slides.length - props.slidesToShow)}
+              disabled={slideIndex === (props.children.length - props.slidesToShow)}
               onClick={() => setSlideIndex(slideIndex + 1)}
             >
               <Icon className={cx(css.chevron, css.nextIcon)} name="chevron-right" />
@@ -38,11 +38,15 @@ const Carousel = (props) => {
   }
 
   return (
-    <ScreenSize render={({ isMobile }) => (
+    <ScreenSize render={({ isMobile, isIpad, isDesktop }) => (
       isMobile ? <MobileCarousel title={props.title}>{props.children}</MobileCarousel> : (
         <div>
           {renderDesktopControls()}
-          <NukaCarousel slideIndex={slideIndex} {...props}>
+          <NukaCarousel
+            slideIndex={slideIndex}
+            framePadding={isIpad ? "0px -8px" : "0px -4px"}
+            {...props}
+          >
             {props.children.map(slide => (
               <div className={css.slideInner}>{slide}</div>
             ))}
@@ -54,10 +58,7 @@ const Carousel = (props) => {
 }
 
 Carousel.defaultProps = {
-  slidesToShow: 3,
-  framePadding: '0px -8px',
   withoutControls: true,
-  title: 'Make your idea travel around the world',
   dragging: false,
 }
 
